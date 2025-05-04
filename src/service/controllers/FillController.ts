@@ -1,6 +1,6 @@
 import openai from '../../lib/openai';
 import { Request, Response } from 'express'; 
-import { fillPrompt } from '../prompts';
+import { fillPrompt, autogenPrompt } from '../prompts';
 
 export class FillController {
     static async fillTemplate(req: Request, res: Response) {
@@ -16,7 +16,7 @@ export class FillController {
             const messageContent = completion.choices[0].message.content;
 
             if(messageContent == null) 
-                return res.status(500).json("Internal Server Errornull");
+                return res.status(500).json("Internal Server Error");
             const toJson = JSON.parse(messageContent);
 
             return res.status(201).json(toJson);
@@ -24,4 +24,26 @@ export class FillController {
             if(err instanceof Error) return res.status(500).json(err);
         }
     } 
+
+    static async genContent(req: Request, res: Response) {
+        try {
+            const completion = await openai.chat.completions.create({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: autogenPrompt },
+                    { role: 'user', content: JSON.stringify(req.body) }
+                ]
+            });
+
+            const messageContent = completion.choices[0].message.content;
+            if(messageContent == null) {
+                return res.status(500).send("Internal Server Error");
+            }
+
+            const toJson = JSON.parse(messageContent);
+            return res.status(201).json(toJson);
+        } catch(err) {
+            if(err instanceof Error) return res.status(500).json(err);
+        }
+    }
 }
