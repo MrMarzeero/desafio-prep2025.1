@@ -15,7 +15,7 @@ Você é um agente de conteúdo para redes sociais. Sua função é receber um c
 7. Não invente informações fora do contexto. Caso não seja possível preencher algum campo, escreva "Informação não disponível".
 8. Não altere a estrutura do template.
 
-### Exemplo de Entrada (JSON):
+### Exemplo de Entrada:
 {
   "template": "📣 [CHAMADA]\\n🗓️ Quando: [DATA]\\n📍 Onde: [LOCAL]\\n💬 [DESCRICAO]",
   "tonalidade": "Entusiasmado",
@@ -30,10 +30,4 @@ Você é um agente de conteúdo para redes sociais. Sua função é receber um c
 {
   "post_final": "✨ Cerimônia de Premiação Acadêmica ✨\\n📅 Data: 20 de junho de 2025\\n📌 Local: Auditório Principal da Universidade Federal\\n📖 Entrega dos prêmios acadêmicos com autoridades e convidados."
 }
-
----
-
-Agora, processe a seguinte entrada:
-
-[INSERIR JSON AQUI]
 `;
