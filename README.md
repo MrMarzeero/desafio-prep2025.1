@@ -31,4 +31,9 @@ Typescript, Express.js, OpenAI API, Swagger UI
 
 [Exemplos de funcionamento](assets/)
 
+## Licença  
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.  
+
+
 *Autor: Otávio Rocha Pinheiro*
